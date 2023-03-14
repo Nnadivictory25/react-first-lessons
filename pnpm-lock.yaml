@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@hookform/resolvers': ^2.9.11
   '@popperjs/core': ^2.11.6
   '@types/react': ^18.0.27
   '@types/react-dom': ^18.0.10
@@ -9,21 +10,26 @@ specifiers:
   bootstrap: 5.2.3
   react: ^18.2.0
   react-dom: ^18.2.0
+  react-hook-form: ^7.43.5
   react-icons: ^4.8.0
   react-is: '>= 16.8.0'
   styled-components: ^5.3.8
   typescript: ^4.9.3
   vite: ^4.1.0
+  zod: ^3.21.4
 
 dependencies:
+  '@hookform/resolvers': 2.9.11_react-hook-form@7.43.5
   '@popperjs/core': 2.11.6
   '@types/styled-components': 5.1.26
   bootstrap: 5.2.3_@popperjs+core@2.11.6
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-hook-form: 7.43.5_react@18.2.0
   react-icons: 4.8.0_react@18.2.0
   react-is: 16.13.1
   styled-components: 5.3.8_vtcxgy2wlmese7djxl6h7ok674
+  zod: 3.21.4
 
 devDependencies:
   '@types/react': 18.0.28
@@ -490,6 +496,14 @@ packages:
     dev: true
     optional: true
 
+  /@hookform/resolvers/2.9.11_react-hook-form@7.43.5:
+    resolution: {integrity: sha512-bA3aZ79UgcHj7tFV7RlgThzwSSHZgvfbt2wprldRkYBcMopdMvHyO17Wwp/twcJasNFischFfS7oz8Katz8DdQ==}
+    peerDependencies:
+      react-hook-form: ^7.0.0
+    dependencies:
+      react-hook-form: 7.43.5_react@18.2.0
+    dev: false
+
   /@jridgewell/gen-mapping/0.1.1:
     resolution: {integrity: sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w==}
     engines: {node: '>=6.0.0'}
@@ -862,6 +876,15 @@ packages:
       scheduler: 0.23.0
     dev: false
 
+  /react-hook-form/7.43.5_react@18.2.0:
+    resolution: {integrity: sha512-YcaXhuFHoOPipu5pC7ckxrLrialiOcU91pKu8P+isAcXZyMgByUK9PkI9j5fENO4+6XU5PwWXRGMIFlk9u9UBQ==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react-icons/4.8.0_react@18.2.0:
     resolution: {integrity: sha512-N6+kOLcihDiAnj5Czu637waJqSnwlMNROzVZMhfX68V/9bu9qHaMIJC4UdozWoOk57gahFCNHwVvWzm0MTzRjg==}
     peerDependencies:
@@ -1014,3 +1037,7 @@ packages:
   /yallist/3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
     dev: true
+
+  /zod/3.21.4:
+    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
+    dev: false
