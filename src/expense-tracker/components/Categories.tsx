@@ -9,6 +9,7 @@ interface Expense {
 
 interface Category {
   expenses: Expense[];
+  onDelete: (id: Number) => void;
 }
 
 const options = [
@@ -23,17 +24,8 @@ const formatter = new Intl.NumberFormat('en-US', {
   currency: 'USD',
 });
 
-const Categories = () => {
+const Categories = ({ expenses, onDelete }: Category) => {
   const [selectedOption, setSelectedOption] = useState('all');
-
-  const [expenses, setExpenses] = useState([
-    { id: 0, category: 'groceries', description: 'Milk', amount: 5.0 },
-    { id: 1, category: 'groceries', description: 'Eggs', amount: 10.0 },
-    { id: 2, category: 'utilities', description: 'Electricity', amount: 100.0 },
-    { id: 3, category: 'entertainment', description: 'Movie', amount: 15.0 },
-    { id: 4, category: 'groceries', description: 'Bread', amount: 5.0 },
-    { id: 5, category: 'entertainment', description: 'Concert', amount: 30.0 },
-  ]);
 
   const total =
     selectedOption === 'all'
@@ -44,9 +36,11 @@ const Categories = () => {
 
   const handleChange = (event: any) => {
     const { value } = event.target;
-    console.log(value);
     setSelectedOption(value);
   };
+
+
+ if (expenses.length === 0) return <h1 className='mt-5'>No Expenses</h1>
 
   return (
     <div className='mt-5'>
@@ -71,21 +65,36 @@ const Categories = () => {
           </tr>
         </thead>
         <tbody>
-          {expenses.map((expense, i) => (
-            <tr key={i}>
-              <td>{expense.description}</td>
-              <td>{formatter.format(expense.amount)}</td>
-              <td className='text-capitalize'>{expense.category}</td>
-              <td>
-                <button className='btn btn-outline-danger'>Delete</button>
-              </td>
-            </tr>
-          ))}
+          {selectedOption === 'all'
+            ? expenses.map((expense, i) => (
+                <tr key={i}>
+                  <td>{expense.description}</td>
+                  <td>{formatter.format(expense.amount)}</td>
+                  <td className='text-capitalize'>{expense.category}</td>
+                  <td>
+                  <button className='btn btn-outline-danger' onClick={() => onDelete(expense.id)}>Delete</button>
+                  </td>
+                </tr>
+              ))
+            : expenses
+                .filter((expense) => expense.category === selectedOption)
+                .map((expense, i) => (
+                  <tr key={i}>
+                    <td>{expense.description}</td>
+                    <td>{formatter.format(expense.amount)}</td>
+                    <td className='text-capitalize'>{expense.category}</td>
+                    <td>
+                      <button className='btn btn-outline-danger' onClick={() => onDelete(expense.id)}>Delete</button>
+                    </td>
+                  </tr>
+                ))}
+        </tbody>
+          <tfoot>
           <tr>
             <td>Total</td>
             <td>{formatter.format(total)}</td>
           </tr>
-        </tbody>
+          </tfoot>
       </table>
     </div>
   );

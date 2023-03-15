@@ -1,12 +1,15 @@
-import Categories from './expense-tracker/components/Categories';
-import Form from './expense-tracker/components/Form';
+import { useState } from 'react';
+import ProductList from './components/ProductList';
 
 function App() {
+  const [category, setCategory] = useState('');
+
+  const connect = () => console.log('connecting')
+  const disconnect = () => console.log('disconnecting')
+
   return (
-    <>
-      <Form />
-      <Categories />
-    </>
+    <div> 
+    </div>
   );
 }
 
